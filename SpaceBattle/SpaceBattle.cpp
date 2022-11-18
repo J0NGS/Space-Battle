@@ -36,7 +36,7 @@ void SpaceBattle::Init()
    
 
     // carrega/incializa objetos
-    //bg   = new Background();
+    bg   = new Background("Resources/Space.png");
     //player  = new Player();
     scene   = new Scene();
 
@@ -123,7 +123,7 @@ void SpaceBattle::Update()
 void SpaceBattle::Draw()
 {
     // desenha pano de fundo
-    //backg->Draw(viewport);
+    bg->Draw(viewport);
 
     // desenha a cena
     scene->Draw();
@@ -144,7 +144,7 @@ void SpaceBattle::Finalize()
     delete audio;
     //delete hud;
     delete scene;
-    //delete backg;
+    delete bg;
 }
 
 
