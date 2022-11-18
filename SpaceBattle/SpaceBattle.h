@@ -39,7 +39,7 @@ private:
     
 public:
    
-    //static Player * player;
+    //static Player * player;  
     
     static Audio* audio;            // sistema de audio do jogo
     static Scene* scene;            // gerenciador de cena do jogo
