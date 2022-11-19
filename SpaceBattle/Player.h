@@ -28,8 +28,15 @@ class Player : public Object
 private:
     Sprite* sprite;                     // sprite do objeto
     Particles* tail;                    // calda da turbina 
-
-                                        
+    Point vertex[4] =                   // pontos para criar poligano bbox 
+    {                                         
+    //inicialização dos pontos da bbox    
+       Point(-38, -60),
+       Point(38, -60),
+       Point(38,  60),
+       Point(-38,  60)                  
+    };                       
+    
     Controller* gamepad;                // leitura do controle
     bool gamepadOn;                     // controle está ligado
 
@@ -41,7 +48,7 @@ private:
     float firingAngle;                  // direção dos disparos
 
 public:
-    
+   
     static Image* missile;              // imagem do míssil
     Vector speed;                       // velocidade e direção de movimento
 

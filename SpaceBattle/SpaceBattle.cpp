@@ -130,7 +130,7 @@ void SpaceBattle::Draw()
     scene->Draw();
 
     // desenha painel de informações
-    if (viewHUD)
+    //if (viewHUD)
         //hud->Draw();
 
     // desenha bounding box

@@ -29,7 +29,10 @@ Player::Player()
     missile = new Image("Resources/Player/Missile.png");
     speed.RotateTo(90.0f);
     speed.ScaleTo(0.0f);
-    BBox(new Circle(18.0f));
+
+    BBox(new Poly(vertex, 4));
+    
+    
     MoveTo(game->CenterX(), game->CenterY());
     type = PLAYER;
     
@@ -133,10 +136,13 @@ void Player::Move(Vector&& v)
 {
     // soma vetor movimento (v) ao vetor velocidade
     speed.Add(v);
-
+    
     // limita velocidade máxima
     if (speed.Magnitude() > 10.0f)
         speed.ScaleTo(10.0f);
+    
+    //função faz com que a BBOX rotacione junto com o objeto. a adição do 90.0f para poder mantela no sentido correto da nave, speed.angle está negativo para inverter o sentido do giro, e poder ficar de acordo com a nave
+    RotateTo(-speed.Angle() + 90); 
 }
 
 // -------------------------------------------------------------------------------
@@ -178,6 +184,7 @@ void Player::Update()
         {
             // movimente-se para a nova direção
             Move(Vector(ang, mag * gameTime));
+            //Rotate(ang);
         }
 
         // dispara míssil com o analógico direito
@@ -196,22 +203,42 @@ void Player::Update()
     else
     {
         // controla movimentação do jogador
-        if (window->KeyDown('D') && window->KeyDown('W'))
+        if (window->KeyDown('D') && window->KeyDown('W')) {
             Move(Vector(45.0f, accel));
-        else if (window->KeyDown('A') && window->KeyDown('W'))
+            Rotate(45.0f *2);
+        }
+        else if (window->KeyDown('A') && window->KeyDown('W')){
             Move(Vector(135.0f, accel));
-        else if (window->KeyDown('A') && window->KeyDown('S'))
-            Move(Vector(225.0f, accel));
-        else if (window->KeyDown('D') && window->KeyDown('S'))
+            Rotate(135.0f *2);
+        }
+        else if (window->KeyDown('A') && window->KeyDown('S')){
+            Move(Vector(225.0f, accel));                      
+            Rotate(225.0f * 2);
+        }
+        else if (window->KeyDown('D') && window->KeyDown('S')){
             Move(Vector(315.0f, accel));
-        else if (window->KeyDown('D'))
+            Rotate(315.0f * 2);
+
+        }
+        else if (window->KeyDown('D')){
             Move(Vector(0.0f, accel));
-        else if (window->KeyDown('A'))
+            //RotateTo(0.0f - 90);
+
+        }
+        else if (window->KeyDown('A')){
             Move(Vector(180.0f, accel));
-        else if (window->KeyDown('W'))
+            //RotateTo(180.0f - 90);
+
+        }
+        else if (window->KeyDown('W')){
             Move(Vector(90.0f, accel));
-        else if (window->KeyDown('S'))
+            //RotateTo(90.0f - 90);
+
+        }
+        else if (window->KeyDown('S')) {
             Move(Vector(270.0f, accel));
+            //RotateTo(270.0f - 90);
+        }
         else
             // se nenhuma tecla está pressionada comece a frear
             if (speed.Magnitude() > 0.1f)
