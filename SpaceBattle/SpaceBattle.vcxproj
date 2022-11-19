@@ -172,8 +172,11 @@
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="Missile.h" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Particles.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -199,6 +202,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Particles.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resources.h" />

@@ -18,6 +18,7 @@
 #include "Audio.h"
 #include "Scene.h"
 #include "Background.h"
+#include "Player.h"
 
 
 // ------------------------------------------------------------------------------
@@ -39,7 +40,7 @@ private:
     
 public:
    
-    //static Player * player;
+    static Player * player;  
     
     static Audio* audio;            // sistema de audio do jogo
     static Scene* scene;            // gerenciador de cena do jogo
