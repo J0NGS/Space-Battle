@@ -14,9 +14,10 @@
 #include "SpaceBattle.h" 
 
 
+
 // ------------------------------------------------------------------------------
 
-//Player * SpaceBatlle::player  = nullptr;
+Player * SpaceBattle::player  = nullptr;
 Audio  * SpaceBattle::audio   = nullptr;
 Scene  * SpaceBattle::scene   = nullptr;
 bool     SpaceBattle::viewHUD = false;
@@ -37,14 +38,14 @@ void SpaceBattle::Init()
 
     // carrega/incializa objetos
     bg   = new Background("Resources/Space.png");
-    //player  = new Player();
+    player  = new Player();
     scene   = new Scene();
 
     // cria o painel de informações
     //hud = new Hud();
 
     // adiciona objetos na cena (sem colisão)
-    //scene->Add(player, STATIC);
+    scene->Add(player, STATIC);
     //scene->Add(new Magenta(player), STATIC);
     //scene->Add(new Blue(player), STATIC);
     //scene->Add(new Green(player), STATIC);
@@ -90,10 +91,10 @@ void SpaceBattle::Update()
     // atualiza a viewport
     // --------------------
 
-    //viewport.left   = player->X() - window->CenterX();
-    //viewport.right  = player->X() + window->CenterX();
-    //viewport.top    = player->Y() - window->CenterY();
-    //viewport.bottom = player->Y() + window->CenterY();
+    viewport.left   = player->X() - window->CenterX();
+    viewport.right  = player->X() + window->CenterX();
+    viewport.top    = player->Y() - window->CenterY();
+    viewport.bottom = player->Y() + window->CenterY();
             
     if (viewport.left < 0)
     {

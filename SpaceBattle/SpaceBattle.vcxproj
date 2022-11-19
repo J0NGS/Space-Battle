@@ -172,6 +172,8 @@
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="Missile.h" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Particles.cpp" />
     <ClCompile Include="Player.cpp" />

@@ -27,7 +27,7 @@ class Player : public Object
 {
 private:
     Sprite* sprite;                     // sprite do objeto
-    Particles* tail;                // calda da turbina esquerda
+    Particles* tail;                    // calda da turbina 
 
                                         
     Controller* gamepad;                // leitura do controle
@@ -43,7 +43,6 @@ private:
 public:
     
     static Image* missile;              // imagem do míssil
-    static Image* shot;                 // imagem do tiro
     Vector speed;                       // velocidade e direção de movimento
 
     Player();                           // construtor

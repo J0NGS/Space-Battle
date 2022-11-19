@@ -40,7 +40,7 @@ Player::Player()
     Generator emitter;
     emitter.imgFile = "Resources/Player/tail.png";    // arquivo de imagem
     emitter.angle = 270.0f;                           // ângulo base do emissor
-    emitter.spread = 25;                              // espalhamento em graus
+    emitter.spread = 0.0f;                              // espalhamento em graus
     emitter.lifetime = 0.3f;                          // tempo de vida em segundos
     emitter.frequency = 0.010f;                       // tempo entre geração de novas partículas
     emitter.percentToDim = 0.6f;                      // desaparece após 60% da vida
@@ -185,7 +185,7 @@ void Player::Update()
         {
             float ang = Line::Angle(Point(0, 0), Point(float(gamepad->Axis(AxisRX)), float(gamepad->Axis(AxisRY))));
             //SpaceBattle::audio->Play(FIRE);
-            SpaceBattle::scene->Add(new Missile(ang), STATIC);
+            //SpaceBattle::scene->Add(new Missile(ang), STATIC);
         }
     }
 
@@ -261,8 +261,8 @@ void Player::Update()
         // dispara míssil
         if (KeysTimed(keysPressed, 0.150f))
         {
-            SpaceBattle::audio->Play(FIRE);
-            SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
+            //SpaceBattle::audio->Play(FIRE);
+            //SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
         }
     }
 
