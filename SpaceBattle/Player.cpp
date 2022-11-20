@@ -10,7 +10,7 @@
 **********************************************************************************/
 
 #include "Player.h" 
-//#include "Missile.h"
+#include "Missile.h"
 #include "SpaceBattle.h"
 //#include "Hud.h"
 
@@ -205,19 +205,19 @@ void Player::Update()
         // controla movimentação do jogador
         if (window->KeyDown('D') && window->KeyDown('W')) {
             Move(Vector(45.0f, accel));
-            Rotate(45.0f *2);
+            //Rotate(45.0f );
         }
         else if (window->KeyDown('A') && window->KeyDown('W')){
             Move(Vector(135.0f, accel));
-            Rotate(135.0f *2);
+            //Rotate(135.0f *2);
         }
         else if (window->KeyDown('A') && window->KeyDown('S')){
             Move(Vector(225.0f, accel));                      
-            Rotate(225.0f * 2);
+            //Rotate(225.0f * 2);
         }
         else if (window->KeyDown('D') && window->KeyDown('S')){
             Move(Vector(315.0f, accel));
-            Rotate(315.0f * 2);
+            //Rotate(315.0f * 2);
 
         }
         else if (window->KeyDown('D')){
@@ -286,10 +286,10 @@ void Player::Update()
         }
 
         // dispara míssil
-        if (KeysTimed(keysPressed, 0.150f))
+        if (KeysTimed(keysPressed, 0.300f))
         {
             //SpaceBattle::audio->Play(FIRE);
-            //SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
+            SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
         }
     }
 
