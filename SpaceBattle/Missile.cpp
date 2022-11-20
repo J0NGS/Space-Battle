@@ -30,11 +30,11 @@ Missile::Missile(float angle)
 
     // inicializa velocidade
     speed.RotateTo(angle);
-    speed.ScaleTo(15.0f);
+    speed.ScaleTo(12.0f);
 
     // move para posição
     MoveTo(player->X() + 40 * cos(speed.Radians()), player->Y() - 40 * sin(speed.Radians()));
-    RotateTo(-speed.Angle() + 90.0f);
+    RotateTo(-speed.Angle() );
 
     // define tipo
     type = MISSILE;
@@ -61,7 +61,7 @@ void Missile::Update()
     Translate(speed.XComponent() * 90.0f * gameTime, -speed.YComponent() * 90.0f * gameTime);
 
     // remove míssil da cena se ele sair da área de jogo
-    if (x > game->Width() - 50 || x < 50 || y > game->Height() - 50 || y < 50)
+    /*if (x > game->Width() - 50 || x < 50 || y > game->Height() - 50 || y < 50)
     {
         // volume do som de destruição depende da distância para o jogador
         const float MaxDistance = 4406;
@@ -76,7 +76,7 @@ void Missile::Update()
 
         // remove míssil da cena
         SpaceBattle::scene->Delete();
-    }
+    }*/
 }
 
 // -------------------------------------------------------------------------------
