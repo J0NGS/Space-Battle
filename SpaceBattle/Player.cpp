@@ -21,12 +21,12 @@ Image* Player::missile = nullptr;
 Player::Player()
 {
     // inicializa controle
-    gamepad = new Controller();
+    gamepad   = new Controller();
     gamepadOn = gamepad->Initialize();
 
     // configuração do objeto
-    sprite = new Sprite("Resources/Player/ship.png");
-    missile = new Image("Resources/Player/Missile.png");
+    sprite  = new Sprite("Resources/ship.png");
+    missile = new Image("Resources/Missile.png");
     speed.RotateTo(90.0f);
     speed.ScaleTo(0.0f);
 
@@ -35,28 +35,23 @@ Player::Player()
     
     MoveTo(game->CenterX(), game->CenterY());
     type = PLAYER;
-    
-
-
-
     // configuração do emissor de partículas
     Generator emitter;
-    emitter.imgFile = "Resources/Player/tail.png";    // arquivo de imagem
-    emitter.angle = 270.0f;                           // ângulo base do emissor
-    emitter.spread = 0.0f;                              // espalhamento em graus
-    emitter.lifetime = 0.3f;                          // tempo de vida em segundos
-    emitter.frequency = 0.010f;                       // tempo entre geração de novas partículas
-    emitter.percentToDim = 0.6f;                      // desaparece após 60% da vida
-    emitter.minSpeed = 50.0f;                         // velocidade mínima das partículas
-    emitter.maxSpeed = 100.0f;                        // velocidade máxima das partículas
-    emitter.color.r = 1.0f;                           // componente Red da partícula 
-    emitter.color.g = 1.0f;                           // componente Green da partícula 
-    emitter.color.b = 1.0f;                           // componente Blue da partícula 
-    emitter.color.a = 1.0f;                           // transparência da partícula
+    emitter.imgFile      = "Resources/particle_fire.png";    // arquivo de imagem
+    emitter.angle        = 270.0f;                           // ângulo base do emissor
+    emitter.spread       = 45.0f;                            // espalhamento em graus
+    emitter.lifetime     = 0.3f;                             // tempo de vida em segundos
+    emitter.frequency    = 0.010f;                           // tempo entre geração de novas partículas
+    emitter.percentToDim = 0.6f;                             // desaparece após 60% da vida
+    emitter.minSpeed     = 50.0f;                            // velocidade mínima das partículas
+    emitter.maxSpeed     = 100.0f;                           // velocidade máxima das partículas
+    emitter.color.r      = 1.0f;                             // componente Red da partícula 
+    emitter.color.g      = 1.0f;                             // componente Green da partícula 
+    emitter.color.b      = 1.0f;                             // componente Blue da partícula 
+    emitter.color.a      = 1.0f;                             // transparência da partícula
 
     // cria sistema de partículas
     tail = new Particles(emitter);
-    
 
     // diparo habilitado
     firingAngle = 0.0f;
@@ -289,7 +284,7 @@ void Player::Update()
         if (KeysTimed(keysPressed, 0.300f))
         {
             //SpaceBattle::audio->Play(FIRE);
-            SpaceBattle::scene->Add(new Missile(speed.Angle()), STATIC);
+            SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
         }
     }
 

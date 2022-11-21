@@ -16,6 +16,7 @@
 
 #include "Game.h"
 #include "Audio.h"
+#include "Hud.h"
 #include "Scene.h"
 #include "Background.h"
 #include "Player.h"
@@ -37,7 +38,7 @@ private:
     Background* bg = nullptr;       // plano de fundo
     //Hud * hud = nullptr
     bool viewBBox = false;          // visualização das bbox
-    
+    Hud * hud;
 public:
    
     static Player * player;  

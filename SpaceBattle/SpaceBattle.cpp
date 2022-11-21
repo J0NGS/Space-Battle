@@ -13,8 +13,6 @@
 #include "Engine.h" 
 #include "SpaceBattle.h" 
 
-
-
 // ------------------------------------------------------------------------------
 
 Player * SpaceBattle::player  = nullptr;
@@ -26,26 +24,26 @@ bool     SpaceBattle::viewHUD = false;
 
 void SpaceBattle::Init()
 {
-    // cria sistema de áudio
-    
+    // cria sistema de áudio    
     audio = new Audio();
     //audio->Add();
     
-
     // ajusta volumes
     //audio->Volume();
-   
+    
+    // Cria hud
+    hud = new Hud();
 
     // carrega/incializa objetos
-    bg   = new Background("Resources/Space.png");
+    bg      = new Background("Resources/Space.png");
     player  = new Player();
     scene   = new Scene();
-
+    
     // cria o painel de informações
     //hud = new Hud();
 
-    // adiciona objetos na cena (sem colisão)
-    scene->Add(player, STATIC);
+    // adiciona objetos na cena
+    scene->Add(player, MOVING);
     //scene->Add(new Magenta(player), STATIC);
     //scene->Add(new Blue(player), STATIC);
     //scene->Add(new Green(player), STATIC);
@@ -122,13 +120,15 @@ void SpaceBattle::Update()
 // ------------------------------------------------------------------------------
 
 void SpaceBattle::Draw()
-{
+{   
+
     // desenha pano de fundo
     bg->Draw(viewport);
 
     // desenha a cena
     scene->Draw();
 
+    hud->Draw();
     // desenha painel de informações
     //if (viewHUD)
         //hud->Draw();
