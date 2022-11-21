@@ -1,11 +1,11 @@
 /**********************************************************************************
-// GeoWars (Código Fonte)
+// GeoWars (Cï¿½digo Fonte)
 // 
-// Criação:     23 Out 2012
-// Atualização: 01 Nov 2021
+// Criaï¿½ï¿½o:     23 Out 2012
+// Atualizaï¿½ï¿½o: 01 Nov 2021
 // Compilador:  Visual C++ 2019
 //
-// Descrição:   Arquivo central do jogo SpaceBattle
+// Descriï¿½ï¿½o:   Arquivo central do jogo SpaceBattle
 //
 **********************************************************************************/
 
@@ -13,8 +13,6 @@
 #include "Engine.h" 
 #include "SpaceBattle.h" 
 #include "Delay.h" 
-
-
 
 // ------------------------------------------------------------------------------
 
@@ -27,28 +25,29 @@ bool     SpaceBattle::viewHUD = false;
 
 void SpaceBattle::Init()
 {
-    // cria sistema de áudio
-    
+    // cria sistema de ï¿½udio    
     audio = new Audio();
     audio->Add(THEME, "Resources/Audio/theme.wav");
     audio->Add(START, "Resources/Audio/init.wav");
     
-
     // ajusta volumes
     //audio->Volume();
     audio->Volume(THEME, 0.30f);
     audio->Volume(START, 0.30f);
     audio->Play(START, true);
+    
+    // Cria hud
+    hud = new Hud();
 
     // carrega/incializa objetos
-    bg   = new Background("Resources/Space.png");
+    bg      = new Background("Resources/Space.png");
     player  = new Player();
     scene   = new Scene();
-
-    // cria o painel de informações
+    
+    // cria o painel de informaï¿½ï¿½es
     //hud = new Hud();
 
-    // adiciona objetos na cena (sem colisão)
+    // adiciona objetos na cena (sem colisï¿½o)
     scene->Add(player, STATIC);
     scene->Add(new Delay, STATIC);  
     //scene->Add(new Magenta(player), STATIC);
@@ -61,7 +60,7 @@ void SpaceBattle::Init()
     // inicializa a viewport
     // ----------------------
 
-    // calcula posição para manter viewport centralizada
+    // calcula posiï¿½ï¿½o para manter viewport centralizada
     float difx = (game->Width() - window->Width()) / 2.0f;
     float dify = (game->Height() - window->Height()) / 2.0f;
 
@@ -80,7 +79,7 @@ void SpaceBattle::Update()
     if (window->KeyDown(VK_ESCAPE))
         window->Close();
 
-    // atualiza cena e calcula colisões
+    // atualiza cena e calcula colisï¿½es
     scene->Update();
     scene->CollisionDetection();
 
@@ -127,14 +126,16 @@ void SpaceBattle::Update()
 // ------------------------------------------------------------------------------
 
 void SpaceBattle::Draw()
-{
+{   
+
     // desenha pano de fundo
     bg->Draw(viewport);
 
     // desenha a cena
     scene->Draw();
 
-    // desenha painel de informações
+    hud->Draw();
+    // desenha painel de informaï¿½ï¿½es
     //if (viewHUD)
         //hud->Draw();
 
@@ -181,10 +182,10 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     // configura o jogo
     game->Size(3840, 2160);
     
-    // inicia execução
+    // inicia execuï¿½ï¿½o
     int status = engine->Start(game);
 
-    // destrói motor e encerra jogo
+    // destrï¿½i motor e encerra jogo
     delete engine;
     return status;
 }

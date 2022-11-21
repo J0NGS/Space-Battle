@@ -1,11 +1,11 @@
 /**********************************************************************************
-// Player (Código Fonte)
+// Player (Cï¿½digo Fonte)
 //
-// Criação:     10 Out 2012
-// Atualização: 11 Nov 2021
+// Criaï¿½ï¿½o:     10 Out 2012
+// Atualizaï¿½ï¿½o: 11 Nov 2021
 // Compilador:  Visual C++ 2019
 //
-// Descrição:   Define a classe jogador
+// Descriï¿½ï¿½o:   Define a classe jogador
 //
 **********************************************************************************/
 
@@ -21,12 +21,12 @@ Image* Player::missile = nullptr;
 Player::Player()
 {
     // inicializa controle
-    gamepad = new Controller();
+    gamepad   = new Controller();
     gamepadOn = gamepad->Initialize();
 
-    // configuração do objeto
-    sprite = new Sprite("Resources/Player/ship.png");
-    missile = new Image("Resources/Player/Missile.png");
+    // configuraï¿½ï¿½o do objeto
+    sprite  = new Sprite("Resources/ship.png");
+    missile = new Image("Resources/Missile.png");
     speed.RotateTo(90.0f);
     speed.ScaleTo(0.0f);
 
@@ -35,41 +35,37 @@ Player::Player()
     
     MoveTo(game->CenterX(), game->CenterY());
     type = PLAYER;
-    
-
-
-
-    // configuração do emissor de partículas
+    // configuraï¿½ï¿½o do emissor de partï¿½culas
     Generator emitter;
     emitter.imgFile = "Resources/Player/particle_fire2.png";    // arquivo de imagem
-    emitter.angle = 270.0f;                                    // ângulo base do emissor
+    emitter.angle = 270.0f;                                    // ï¿½ngulo base do emissor
     emitter.spread = 10.0f;                                     // espalhamento em graus
     emitter.lifetime = 0.3f;                                   // tempo de vida em segundos
-    emitter.frequency = 0.010f;                                // tempo entre geração de novas partículas
-    emitter.percentToDim = 0.6f;                               // desaparece após 60% da vida
-    emitter.minSpeed = 50.0f;                                  // velocidade mínima das partículas
-    emitter.maxSpeed = 100.0f;                                 // velocidade máxima das partículas
-    emitter.color.r = 1.0f;                                    // componente Red da partícula 
-    emitter.color.g = 1.0f;                                    // componente Green da partícula 
-    emitter.color.b = 1.0f;                                    // componente Blue da partícula 
-    emitter.color.a = 1.0f;                                    // transparência da partícula
+    emitter.frequency = 0.010f;                                // tempo entre geraï¿½ï¿½o de novas partï¿½culas
+    emitter.percentToDim = 0.6f;                               // desaparece apï¿½s 60% da vida
+    emitter.minSpeed = 50.0f;                                  // velocidade mï¿½nima das partï¿½culas
+    emitter.maxSpeed = 100.0f;                                 // velocidade mï¿½xima das partï¿½culas
+    emitter.color.r = 1.0f;                                    // componente Red da partï¿½cula 
+    emitter.color.g = 1.0f;                                    // componente Green da partï¿½cula 
+    emitter.color.b = 1.0f;                                    // componente Blue da partï¿½cula 
+    emitter.color.a = 1.0f;                                    // transparï¿½ncia da partï¿½cula
 
     //------------------------------------------------------------------------------------------------------------//
 
     Generator emitter2;
     emitter2.imgFile = "Resources/Player/particle_fire.png";    // arquivo de imagem
-    emitter2.angle = 270.0f;                                    // ângulo base do emissor
+    emitter2.angle = 270.0f;                                    // ï¿½ngulo base do emissor
     emitter2.spread = 10.0f;                                     // espalhamento em graus
     emitter2.lifetime = 0.280f;                                   // tempo de vida em segundos
-    emitter2.frequency = 0.040f;                                // tempo entre geração de novas partículas
-    emitter2.percentToDim = 0.5f;                               // desaparece após 60% da vida
-    emitter2.minSpeed = 50.0f;                                  // velocidade mínima das partículas
-    emitter2.maxSpeed = 100.0f;                                 // velocidade máxima das partículas
-    emitter2.color.r = 1.0f;                                    // componente Red da partícula 
-    emitter2.color.g = 1.0f;                                    // componente Green da partícula 
-    emitter2.color.b = 1.0f;                                    // componente Blue da partícula 
-    emitter2.color.a = 20.0f;                                    // transparência da partícula
-    // cria sistema de partículas
+    emitter2.frequency = 0.040f;                                // tempo entre geraï¿½ï¿½o de novas partï¿½culas
+    emitter2.percentToDim = 0.5f;                               // desaparece apï¿½s 60% da vida
+    emitter2.minSpeed = 50.0f;                                  // velocidade mï¿½nima das partï¿½culas
+    emitter2.maxSpeed = 100.0f;                                 // velocidade mï¿½xima das partï¿½culas
+    emitter2.color.r = 1.0f;                                    // componente Red da partï¿½cula 
+    emitter2.color.g = 1.0f;                                    // componente Green da partï¿½cula 
+    emitter2.color.b = 1.0f;                                    // componente Blue da partï¿½cula 
+    emitter2.color.a = 20.0f;                                    // transparï¿½ncia da partï¿½cula
+    // cria sistema de partï¿½culas
     tail = new Particles(emitter);
     tail2 = new Particles(emitter2);
 
@@ -97,10 +93,10 @@ Player::~Player()
 
 bool Player::KeysTimed(bool pressed, float time)
 {
-    // se já passou o tempo para o próximo disparo
+    // se jï¿½ passou o tempo para o prï¿½ximo disparo
     if (keysCtrl)
     {
-        // se há qualquer seta pressionada
+        // se hï¿½ qualquer seta pressionada
         if (pressed)
         {
             keysCtrl = false;
@@ -108,13 +104,13 @@ bool Player::KeysTimed(bool pressed, float time)
             return true;
         }
     }
-    // senão aguarda o momento certo
+    // senï¿½o aguarda o momento certo
     else if (timer.Elapsed(start, time))
     {
         keysCtrl = true;
     }
 
-    // teclas não pressionadas ou tempo não atingido
+    // teclas nï¿½o pressionadas ou tempo nï¿½o atingido
     return false;
 }
 
@@ -122,13 +118,13 @@ bool Player::KeysTimed(bool pressed, float time)
 
 bool Player::AxisTimed(int axisX, int axisY, float time)
 {
-    // se já passou o tempo para o próximo disparo
+    // se jï¿½ passou o tempo para o prï¿½ximo disparo
     if (axisCtrl)
     {
-        // a magnitude é a distância do eixo para o seu centro
+        // a magnitude ï¿½ a distï¿½ncia do eixo para o seu centro
         float magnitude = Point::Distance(Point(0, 0), Point(float(gamepad->Axis(axisX)), float(gamepad->Axis(axisY))));
 
-        // se há qualquer movimento no eixo
+        // se hï¿½ qualquer movimento no eixo
         if (magnitude > 0)
         {
             axisCtrl = false;
@@ -136,13 +132,13 @@ bool Player::AxisTimed(int axisX, int axisY, float time)
             return true;
         }
     }
-    // senão aguarda o momento certo para testar
+    // senï¿½o aguarda o momento certo para testar
     else if (timer.Elapsed(start, time))
     {
         axisCtrl = true;
     }
 
-    // eixo não acionado ou tempo não atingido
+    // eixo nï¿½o acionado ou tempo nï¿½o atingido
     return false;
 }
 
@@ -153,11 +149,11 @@ void Player::Move(Vector&& v)
     // soma vetor movimento (v) ao vetor velocidade
     speed.Add(v);
     
-    // limita velocidade máxima
+    // limita velocidade mï¿½xima
     if (speed.Magnitude() > 10.0f)
         speed.ScaleTo(10.0f);
     
-    //função faz com que a BBOX rotacione junto com o objeto. a adição do 90.0f para poder mante-la no sentido correto da nave, speed.angle está negativo para inverter o sentido do giro, e poder ficar de acordo com a nave
+    //funï¿½ï¿½o faz com que a BBOX rotacione junto com o objeto. a adiï¿½ï¿½o do 90.0f para poder mante-la no sentido correto da nave, speed.angle estï¿½ negativo para inverter o sentido do giro, e poder ficar de acordo com a nave
     RotateTo(-speed.Angle() + 90); 
 }
 
@@ -165,7 +161,7 @@ void Player::Move(Vector&& v)
 
 void Player::Update()
 {
-    // magnitude do vetor aceleração
+    // magnitude do vetor aceleraï¿½ï¿½o
     float accel = 40.0f * gameTime;
 
     // -----------------
@@ -177,11 +173,11 @@ void Player::Update()
         // atualiza estado das teclas e eixos do controle
         gamepad->UpdateState();
 
-        // constrói vetor com base na posição do analógico esquerdo
+        // constrï¿½i vetor com base na posiï¿½ï¿½o do analï¿½gico esquerdo
         float ang = Line::Angle(Point(0, 0), Point(gamepad->Axis(AxisX) / 25.0f, gamepad->Axis(AxisY) / 25.0f));
         float mag = Point::Distance(Point(0, 0), Point(gamepad->Axis(AxisX) / 25.0f, gamepad->Axis(AxisY) / 25.0f));
 
-        // nenhuma direção selecionada
+        // nenhuma direï¿½ï¿½o selecionada
         if (mag == 0)
         {
             // se a velocidade estiver muita baixa
@@ -192,18 +188,18 @@ void Player::Update()
             }
             else
             {
-                // some um vetor no sentido contrário para frear
+                // some um vetor no sentido contrï¿½rio para frear
                 Move(Vector(speed.Angle() + 180.0f, 5.0f * gameTime));
             }
         }
         else
         {
-            // movimente-se para a nova direção
+            // movimente-se para a nova direï¿½ï¿½o
             Move(Vector(ang, mag * gameTime));
             //Rotate(ang);
         }
 
-        // dispara míssil com o analógico direito
+        // dispara mï¿½ssil com o analï¿½gico direito
         if (AxisTimed(AxisRX, AxisRY, 0.150f))
         {
             float ang = Line::Angle(Point(0, 0), Point(float(gamepad->Axis(AxisRX)), float(gamepad->Axis(AxisRY))));
@@ -218,7 +214,7 @@ void Player::Update()
 
     else
     {
-        // controla movimentação do jogador
+        // controla movimentaï¿½ï¿½o do jogador
         if (window->KeyDown('D') && window->KeyDown('W')) {
             Move(Vector(45.0f, accel));
             //Rotate(45.0f );
@@ -256,14 +252,14 @@ void Player::Update()
             //RotateTo(270.0f - 90);
         }
         else
-            // se nenhuma tecla está pressionada comece a frear
+            // se nenhuma tecla estï¿½ pressionada comece a frear
             if (speed.Magnitude() > 0.1f)
                 Move(Vector(speed.Angle() + 180.0f, 5.0f * gameTime));
             else
-                // velocidade muita baixa, não use soma vetorial, apenas pare
+                // velocidade muita baixa, nï¿½o use soma vetorial, apenas pare
                 speed.ScaleTo(0.0f);
 
-        // controla direção dos disparos
+        // controla direï¿½ï¿½o dos disparos
         if (window->KeyDown(VK_RIGHT) && window->KeyDown(VK_UP)) {
             keysPressed = true;
             firingAngle = 45.0f;
@@ -301,7 +297,7 @@ void Player::Update()
             keysPressed = false;
         }
 
-        // dispara míssil
+        // dispara mï¿½ssil
         if (KeysTimed(keysPressed, 0.300f))
         {
             //SpaceBattle::audio->Play(FIRE);
@@ -322,7 +318,7 @@ void Player::Update()
     tail2->Update(gameTime);
 
 
-    // restringe a área do jogo
+    // restringe a ï¿½rea do jogo
     if (x < 50)
         MoveTo(50, y);
     if (y < 50)
