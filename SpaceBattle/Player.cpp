@@ -41,22 +41,38 @@ Player::Player()
 
     // configuração do emissor de partículas
     Generator emitter;
-    emitter.imgFile = "Resources/Player/tail.png";    // arquivo de imagem
-    emitter.angle = 270.0f;                           // ângulo base do emissor
-    emitter.spread = 0.0f;                              // espalhamento em graus
-    emitter.lifetime = 0.3f;                          // tempo de vida em segundos
-    emitter.frequency = 0.010f;                       // tempo entre geração de novas partículas
-    emitter.percentToDim = 0.6f;                      // desaparece após 60% da vida
-    emitter.minSpeed = 50.0f;                         // velocidade mínima das partículas
-    emitter.maxSpeed = 100.0f;                        // velocidade máxima das partículas
-    emitter.color.r = 1.0f;                           // componente Red da partícula 
-    emitter.color.g = 1.0f;                           // componente Green da partícula 
-    emitter.color.b = 1.0f;                           // componente Blue da partícula 
-    emitter.color.a = 1.0f;                           // transparência da partícula
+    emitter.imgFile = "Resources/Player/particle_fire2.png";    // arquivo de imagem
+    emitter.angle = 270.0f;                                    // ângulo base do emissor
+    emitter.spread = 10.0f;                                     // espalhamento em graus
+    emitter.lifetime = 0.3f;                                   // tempo de vida em segundos
+    emitter.frequency = 0.010f;                                // tempo entre geração de novas partículas
+    emitter.percentToDim = 0.6f;                               // desaparece após 60% da vida
+    emitter.minSpeed = 50.0f;                                  // velocidade mínima das partículas
+    emitter.maxSpeed = 100.0f;                                 // velocidade máxima das partículas
+    emitter.color.r = 1.0f;                                    // componente Red da partícula 
+    emitter.color.g = 1.0f;                                    // componente Green da partícula 
+    emitter.color.b = 1.0f;                                    // componente Blue da partícula 
+    emitter.color.a = 1.0f;                                    // transparência da partícula
 
+    //------------------------------------------------------------------------------------------------------------//
+
+    Generator emitter2;
+    emitter2.imgFile = "Resources/Player/particle_fire.png";    // arquivo de imagem
+    emitter2.angle = 270.0f;                                    // ângulo base do emissor
+    emitter2.spread = 10.0f;                                     // espalhamento em graus
+    emitter2.lifetime = 0.280f;                                   // tempo de vida em segundos
+    emitter2.frequency = 0.040f;                                // tempo entre geração de novas partículas
+    emitter2.percentToDim = 0.5f;                               // desaparece após 60% da vida
+    emitter2.minSpeed = 50.0f;                                  // velocidade mínima das partículas
+    emitter2.maxSpeed = 100.0f;                                 // velocidade máxima das partículas
+    emitter2.color.r = 1.0f;                                    // componente Red da partícula 
+    emitter2.color.g = 1.0f;                                    // componente Green da partícula 
+    emitter2.color.b = 1.0f;                                    // componente Blue da partícula 
+    emitter2.color.a = 20.0f;                                    // transparência da partícula
     // cria sistema de partículas
     tail = new Particles(emitter);
-    
+    tail2 = new Particles(emitter2);
+
 
     // diparo habilitado
     firingAngle = 0.0f;
@@ -301,6 +317,10 @@ void Player::Update()
     tail->Generate(x - 10 * cos(speed.Radians()), y + 10 * sin(speed.Radians()));
     tail->Update(gameTime);
 
+    tail2->Config().angle = speed.Angle() + 180;
+    tail2->Generate(x - 10 * cos(speed.Radians()), y + 10 * sin(speed.Radians()));
+    tail2->Update(gameTime);
+
 
     // restringe a área do jogo
     if (x < 50)
@@ -318,7 +338,12 @@ void Player::Update()
 void Player::Draw()
 {
     sprite->Draw(x, y, Layer::MIDDLE, 1.0f, -speed.Angle() + 90.0f);
-    tail->Draw(Layer::LOWER, 1.0f);
+    
+    if (speed.Magnitude() > 0.0f) {                     // se a navem estiver em movimento
+        tail->Draw(Layer::LOWER, 1.0f);          // desenha calda 1
+        tail2->Draw(Layer::LOWER, 2.0f);         // desenha calda 2
+    }
+    
 }
 
 // -------------------------------------------------------------------------------

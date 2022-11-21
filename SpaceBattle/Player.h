@@ -28,6 +28,7 @@ class Player : public Object
 private:
     Sprite* sprite;                     // sprite do objeto
     Particles* tail;                    // calda da turbina 
+    Particles* tail2;                   // calda da turbina 
     Point vertex[4] =                   // pontos para criar poligano bbox 
     {                                         
     //inicialização dos pontos da bbox    

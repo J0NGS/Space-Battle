@@ -116,6 +116,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>dxgi.lib;d3d11.lib;winmm.lib;d3dcompiler.lib;xaudio2.lib;dxguid.lib;dinput8.lib;xinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -173,7 +174,6 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Missile.cpp" />
-    <ClCompile Include="Missile.h" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Particles.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -200,6 +200,9 @@
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Missile.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Object.h" />
     <ClInclude Include="Particles.h" />
     <ClInclude Include="Player.h" />
