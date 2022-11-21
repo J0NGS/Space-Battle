@@ -31,12 +31,14 @@ void SpaceBattle::Init()
     
     audio = new Audio();
     audio->Add(THEME, "Resources/Audio/theme.wav");
+    audio->Add(START, "Resources/Audio/init.wav");
     
 
     // ajusta volumes
     //audio->Volume();
     audio->Volume(THEME, 0.30f);
-   
+    audio->Volume(START, 0.30f);
+    audio->Play(START, true);
 
     // carrega/incializa objetos
     bg   = new Background("Resources/Space.png");
