@@ -12,6 +12,7 @@
 #include "Resources.h"
 #include "Engine.h" 
 #include "SpaceBattle.h" 
+#include "Delay.h" 
 
 
 
@@ -29,11 +30,12 @@ void SpaceBattle::Init()
     // cria sistema de áudio
     
     audio = new Audio();
-    //audio->Add();
+    audio->Add(THEME, "Resources/Audio/theme.wav");
     
 
     // ajusta volumes
     //audio->Volume();
+    audio->Volume(THEME, 0.30f);
    
 
     // carrega/incializa objetos
@@ -46,6 +48,7 @@ void SpaceBattle::Init()
 
     // adiciona objetos na cena (sem colisão)
     scene->Add(player, STATIC);
+    scene->Add(new Delay, STATIC);  
     //scene->Add(new Magenta(player), STATIC);
     //scene->Add(new Blue(player), STATIC);
     //scene->Add(new Green(player), STATIC);
