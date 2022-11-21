@@ -9,7 +9,7 @@
 //
 **********************************************************************************/
 
-#include "Player.h" 
+#include "Player.h"
 #include "Missile.h"
 #include "SpaceBattle.h"
 //#include "Hud.h"
@@ -192,7 +192,7 @@ void Player::Update()
         {
             float ang = Line::Angle(Point(0, 0), Point(float(gamepad->Axis(AxisRX)), float(gamepad->Axis(AxisRY))));
             //SpaceBattle::audio->Play(FIRE);
-            //SpaceBattle::scene->Add(new Missile(ang), STATIC);
+            SpaceBattle::scene->Add(new Missile(ang), STATIC);
         }
     }
 
@@ -289,7 +289,7 @@ void Player::Update()
         if (KeysTimed(keysPressed, 0.300f))
         {
             //SpaceBattle::audio->Play(FIRE);
-            SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
+            SpaceBattle::scene->Add(new Missile(speed.Angle()), STATIC);
         }
     }
 
