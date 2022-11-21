@@ -48,7 +48,7 @@ void SpaceBattle::Init()
     //hud = new Hud();
 
     // adiciona objetos na cena (sem colis�o)
-    scene->Add(player, STATIC);
+    scene->Add(player, MOVING);
     scene->Add(new Delay, STATIC);  
     //scene->Add(new Magenta(player), STATIC);
     //scene->Add(new Blue(player), STATIC);
