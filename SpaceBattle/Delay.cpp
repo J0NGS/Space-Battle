@@ -42,16 +42,20 @@ Delay::~Delay()
 
 void Delay::Update()
 {
+
     if (notPlayed && timer.Elapsed(2.0f))
     {
         // toca áudio de introdução
-        //SpaceBattle::audio->Play(START);
         notPlayed = false;
     }
 
     if (!fase1 && timer.Elapsed(6.0f))
     {
+        // para de tocar a música de inicio
+        SpaceBattle::audio->Stop(START);
+        
         // toca música do jogo
+        
         SpaceBattle::audio->Play(THEME, true);
         //SpaceBattle::scene->Add(new WaveO(), STATIC);
         //SpaceBattle::viewHUD = true;
