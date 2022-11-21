@@ -157,7 +157,7 @@ void Player::Move(Vector&& v)
     if (speed.Magnitude() > 10.0f)
         speed.ScaleTo(10.0f);
     
-    //função faz com que a BBOX rotacione junto com o objeto. a adição do 90.0f para poder mantela no sentido correto da nave, speed.angle está negativo para inverter o sentido do giro, e poder ficar de acordo com a nave
+    //função faz com que a BBOX rotacione junto com o objeto. a adição do 90.0f para poder mante-la no sentido correto da nave, speed.angle está negativo para inverter o sentido do giro, e poder ficar de acordo com a nave
     RotateTo(-speed.Angle() + 90); 
 }
 
@@ -305,7 +305,7 @@ void Player::Update()
         if (KeysTimed(keysPressed, 0.300f))
         {
             //SpaceBattle::audio->Play(FIRE);
-            SpaceBattle::scene->Add(new Missile(speed.Angle()), STATIC);
+            SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
         }
     }
 
