@@ -39,6 +39,7 @@ void SpaceBattle::Init()
     
     // ajusta volumes
     //audio->Volume();
+    audio->Volume(GAMEOVER, 1.0f);
     audio->Volume(THEME, 0.30f);
     audio->Volume(START, 0.30f);
     audio->Volume(EXPLOSION, 0.30f);

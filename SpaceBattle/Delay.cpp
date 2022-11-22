@@ -54,7 +54,6 @@ void Delay::Update()
     {
         // toca áudio de introdução
         notPlayed = false;
-        end = false;
     }
 
     if (!fase1 && timer.Elapsed(6.0f))
@@ -110,6 +109,8 @@ void Delay::Draw()
     
     if (end == true){
         gameover->Draw(game->viewport.left + window->CenterX(), game->viewport.top + window->CenterY() - 150, Layer::FRONT);
+        SpaceBattle::audio->Stop(START);
+        SpaceBattle::audio->Stop(THEME);
     }
 }
 
