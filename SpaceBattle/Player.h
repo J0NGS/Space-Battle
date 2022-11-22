@@ -60,6 +60,7 @@ public:
     bool AxisTimed(int axisX, int axisY, float time);
     bool KeysTimed(bool pressed, float time);
 
+    void Oncolission(Object* obj);      // tratamento de colisão
     void Move(Vector&& v);              // movimenta jogador
     void Update();                      // atualização
     void Draw();                        // desenho

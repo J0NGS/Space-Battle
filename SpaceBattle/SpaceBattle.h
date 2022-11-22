@@ -20,7 +20,9 @@
 #include "Scene.h"
 #include "Background.h"
 #include "Player.h"
+// ------------------------------------------------------------------------------
 
+enum ShootIds { DEFAULT, ENM_1, ENM_2, ENM_3 };
 
 // ------------------------------------------------------------------------------
 
@@ -28,7 +30,7 @@ enum ObjectIds { PLAYER, MISSILE };
 
 // ------------------------------------------------------------------------------
 
-enum SoundIds {THEME, START, FIRE, EXPLOSION };
+enum SoundIds {THEME, START, FIRE, EXPLOSION, TAIL };
 
 // ------------------------------------------------------------------------------
 

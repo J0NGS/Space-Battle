@@ -29,13 +29,17 @@ void SpaceBattle::Init()
     audio = new Audio();
     audio->Add(THEME, "Resources/Audio/theme.wav");
     audio->Add(START, "Resources/Audio/init.wav");
+    audio->Add(FIRE, "Resources/Audio/shoot.wav");
+    audio->Add(TAIL, "Resources/Audio/tail.wav");
     
     // ajusta volumes
     //audio->Volume();
     audio->Volume(THEME, 0.30f);
     audio->Volume(START, 0.30f);
+    audio->Volume(FIRE, 0.30f);
+    audio->Volume(TAIL, 0.09f);
     audio->Play(START, true);
-    
+        
     // Cria hud
     hud = new Hud();
 

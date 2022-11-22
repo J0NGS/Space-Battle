@@ -191,9 +191,6 @@
     <ClInclude Include="Player.h">
       <Filter>Game\Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Ship1.h">
-      <Filter>Game\Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Delay.h">
       <Filter>Game\Arquivos de Cabeçalho</Filter>
     </ClInclude>

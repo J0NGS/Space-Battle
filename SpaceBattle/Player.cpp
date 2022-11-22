@@ -66,16 +66,16 @@ Player::Player()
     emitter2.color.b = 1.0f;                                    // componente Blue da part�cula 
     emitter2.color.a = 20.0f;                                    // transpar�ncia da part�cula
     // cria sistema de part�culas
-    tail = new Particles(emitter);
+    tail  = new Particles(emitter);
     tail2 = new Particles(emitter2);
 
 
     // diparo habilitado
     firingAngle = 0.0f;
     keysPressed = false;
-    axisCtrl = true;
-    keysCtrl = true;
-    start = 0;
+    axisCtrl    = true;
+    keysCtrl    = true;
+    start       = 0;
     timer.Start();
 }
 
@@ -190,6 +190,7 @@ void Player::Update()
             {
                 // some um vetor no sentido contr�rio para frear
                 Move(Vector(speed.Angle() + 180.0f, 5.0f * gameTime));
+                SpaceBattle::audio->Play(TAIL);
             }
         }
         else
@@ -203,7 +204,7 @@ void Player::Update()
         if (AxisTimed(AxisRX, AxisRY, 0.150f))
         {
             float ang = Line::Angle(Point(0, 0), Point(float(gamepad->Axis(AxisRX)), float(gamepad->Axis(AxisRY))));
-            //SpaceBattle::audio->Play(FIRE);
+            SpaceBattle::audio->Play(FIRE);
             SpaceBattle::scene->Add(new Missile(ang), STATIC);
         }
     }
@@ -214,6 +215,7 @@ void Player::Update()
 
     else
     {
+        SpaceBattle::audio->Play(TAIL);
         // controla movimenta��o do jogador
         if (window->KeyDown('D') && window->KeyDown('W')) {
             Move(Vector(45.0f, accel));
@@ -255,10 +257,11 @@ void Player::Update()
             // se nenhuma tecla est� pressionada comece a frear
             if (speed.Magnitude() > 0.1f)
                 Move(Vector(speed.Angle() + 180.0f, 5.0f * gameTime));
-            else
+            else{
                 // velocidade muita baixa, n�o use soma vetorial, apenas pare
                 speed.ScaleTo(0.0f);
-
+                SpaceBattle::audio->Stop(TAIL);
+            }
         // controla dire��o dos disparos
         if (window->KeyDown(VK_RIGHT) && window->KeyDown(VK_UP)) {
             keysPressed = true;
@@ -300,7 +303,7 @@ void Player::Update()
         // dispara m�ssil
         if (KeysTimed(keysPressed, 0.300f))
         {
-            //SpaceBattle::audio->Play(FIRE);
+            SpaceBattle::audio->Play(FIRE);
             SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
         }
     }

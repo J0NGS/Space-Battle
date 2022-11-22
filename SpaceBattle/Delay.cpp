@@ -87,7 +87,7 @@ void Delay::Update()
 void Delay::Draw()
 {
     if (!fase1)
-        logo->Draw(game->viewport.left + window->CenterX(), game->viewport.top + window->CenterY(), Layer::FRONT);
+        logo->Draw(game->viewport.left + window->CenterX(), game->viewport.top + window->CenterY() - 150, Layer::FRONT);
 }
 
 // -------------------------------------------------------------------------------
