@@ -22,6 +22,9 @@
 Delay::Delay()
 {
     logo = new Sprite("Resources/Logo.png");
+    gameover = new Sprite("Resources/Gameover.png");
+    tile = new TileSet("Resources/player/PlayerExplosion.png", 256, 256, 11, 11);
+    anim = new Animation(tile, 0.120f, false);
     timer.Start();
 
     notPlayed = true;
@@ -29,6 +32,7 @@ Delay::Delay()
     fase2 = false;
     fase3 = false;
     fase4 = false;
+    end   = false;
 }
 
 // ------------------------------------------------------------------------------
@@ -36,6 +40,9 @@ Delay::Delay()
 Delay::~Delay()
 {
     delete logo;
+    delete tile;
+    delete anim;
+    delete gameover;
 }
 
 // -------------------------------------------------------------------------------
@@ -47,6 +54,7 @@ void Delay::Update()
     {
         // toca áudio de introdução
         notPlayed = false;
+        end       = false;
     }
 
     if (!fase1 && timer.Elapsed(6.0f))
@@ -80,6 +88,19 @@ void Delay::Update()
     //    BasicAI::scene->Delete();
     //    fase4 = true;
     //}
+
+    if (SpaceBattle::player->Life() <= 0) {
+        SpaceBattle::scene->Delete(SpaceBattle::player, MOVING);
+        end = true;
+        notPlayed = true;
+        fase1 = false;
+        fase2 = false;
+        fase3 = false;
+        fase4 = false;
+    }
+    
+
+
 }
 
 // -------------------------------------------------------------------------------
@@ -88,6 +109,11 @@ void Delay::Draw()
 {
     if (!fase1)
         logo->Draw(game->viewport.left + window->CenterX(), game->viewport.top + window->CenterY() - 150, Layer::FRONT);
+    
+    if (end == true){
+        gameover->Draw(game->viewport.left + window->CenterX(), game->viewport.top + window->CenterY() - 150, Layer::FRONT);
+        anim->NextFrame();
+    }
 }
 
 // -------------------------------------------------------------------------------

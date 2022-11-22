@@ -269,7 +269,6 @@ void Player::Update()
                 // velocidade muita baixa, n�o use soma vetorial, apenas pare
                 speed.ScaleTo(0.0f);
                 SpaceBattle::audio->Stop(TAIL);
-                Damage(10);
             }
         // controla dire��o dos disparos
         if (window->KeyDown(VK_RIGHT) && window->KeyDown(VK_UP)) {
@@ -305,6 +304,7 @@ void Player::Update()
             keysPressed = true;
             firingAngle = 270.0f;
         }
+    }
         else
         {
             keysPressed = false;
