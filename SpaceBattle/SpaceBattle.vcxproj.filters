@@ -239,4 +239,9 @@
       <Filter>Engine\Arquivos de Sombreamento</Filter>
     </FxCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Icon.ico">
+      <Filter>Game\Arquivos de Recurso</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

@@ -28,7 +28,14 @@ private:
     Sprite* sprite;                            // sprite do objeto
     Player* player;                            // ponteiro para jogador
     Vector speed;                               // velocidade e direção
-
+    Point vertex[4] =                   // pontos para criar poligano bbox 
+    {
+        //inicialização dos pontos da bbox    
+           Point(-22, -40),
+           Point(22, -40),
+           Point(22,  40),
+           Point(-22,  40)
+    };
 public:
     Enemy2(float pX, float pY, Player* p);    // construtor
     ~Enemy2();                                 // destrutor

@@ -21,7 +21,7 @@ Enemy2::Enemy2(float pX, float pY, Player* p)
 {
     player = p;
     sprite = new Sprite(SpaceBattle::enemy2);
-    BBox(new Circle(18.0f));
+    BBox(new Poly(vertex, 4));
 
     speed.RotateTo(0);
     speed.ScaleTo(2.0f);
@@ -51,10 +51,11 @@ void Enemy2::OnCollision(Object* obj)
     
     if (obj->Type() == PLAYER)
     {
+        SpaceBattle::player->Damage(15);
         SpaceBattle::scene->Delete(this, MOVING);
         SpaceBattle::scene->Add(new Explosion(x, y), STATIC);
         SpaceBattle::audio->Play(EXPLOSION);
-        Hud::score += 2;
+        Hud::score += 5;
     }
 }
 

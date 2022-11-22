@@ -78,6 +78,7 @@ void Enemy1::OnCollision(Object * obj)
     }
     if (obj->Type() == PLAYER)
     {
+        SpaceBattle::player->Damage(5);
         SpaceBattle::scene->Delete(this, MOVING);
         SpaceBattle::scene->Add(new Explosion(x, y), STATIC);
         SpaceBattle::audio->Play(EXPLOSION);

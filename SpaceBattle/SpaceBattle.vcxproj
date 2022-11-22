@@ -264,6 +264,9 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Shaders/%(Filename).cso</ObjectFileOutput>
     </FxCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Icon.ico" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

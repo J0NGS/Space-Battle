@@ -49,6 +49,7 @@ Delay::~Delay()
 
 void Delay::Update()
 {
+    Hud::time = timer.Elapsed();
 
     if (notPlayed && timer.Elapsed(2.0f))
     {

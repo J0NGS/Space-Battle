@@ -34,7 +34,6 @@ private:
     float totalTime;                    // tempo total transcorrido 
     uint fps;                           // valor para exibição do fps
 
-
 public:
     static int   life;                // vida na hud
     static uint score;                // número de inimigos laranja

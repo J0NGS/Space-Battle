@@ -308,7 +308,6 @@ void Player::Update()
         else if (window->KeyDown(VK_LEFT)) {
             keysPressed = true;
             firingAngle = 180.0f;
-            Damage(10);
         }
         else if (window->KeyDown(VK_UP)) {
             keysPressed = true;
