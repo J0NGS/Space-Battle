@@ -47,7 +47,6 @@ void SpaceBattle::Init()
     // carrega/incializa objetos
     bg      = new Background("Resources/Space.png");
     player  = new Player();
-    hud     = new Hud();
     scene   = new Scene();
     
     enemy1 = new Image("Resources/Enemys/Ship1.png");
@@ -76,6 +75,8 @@ void SpaceBattle::Init()
     viewport.right = viewport.left + window->Width();
     viewport.top = 0.0f + dify;
     viewport.bottom = viewport.top + window->Height();
+
+    hud = new Hud(viewport);
 }
 
 // ------------------------------------------------------------------------------
@@ -173,9 +174,9 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     Engine * engine = new Engine();
 
     // configura motor
-    engine->window->Mode(WINDOWED);
-    engine->window->Size(1152, 648);
-    //engine->window->Mode(BORDERLESS);
+    //engine->window->Mode(WINDOWED);
+    //engine->window->Size(1152, 648);
+    engine->window->Mode(BORDERLESS);
     engine->window->Color(0, 0, 0);
     engine->window->Title("Space Battle");
     engine->window->Icon(IDI_ICON);

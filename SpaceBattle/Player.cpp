@@ -304,7 +304,6 @@ void Player::Update()
             keysPressed = true;
             firingAngle = 270.0f;
         }
-    }
         else
         {
             keysPressed = false;

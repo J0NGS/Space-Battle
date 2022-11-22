@@ -34,6 +34,9 @@ private:
     float totalTime;                    // tempo total transcorrido 
     uint fps;                           // valor para exibição do fps
 
+    float yTop;
+    float yBottom;
+
 public:
     static int  life;                 // número de mísseis na tela
     static uint score;                // número de inimigos laranja
@@ -43,7 +46,7 @@ public:
     static uint enemy2;               // número de inimigos rosa
     static uint enemy3;               // número de inimigos rosa
     
-    Hud();                              // construtor
+    Hud(ViewPort view);                              // construtor
     ~Hud();                             // destrutor
 
     void Update();                      // atualização

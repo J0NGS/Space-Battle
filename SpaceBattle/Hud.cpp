@@ -26,7 +26,7 @@ uint Hud::enemy3 = 0;               // número de inimigos rosa
 
 // ------------------------------------------------------------------------------
 
-Hud::Hud()
+Hud::Hud(ViewPort view)
 {
     // cria fonte para exibição de texto
     font = new Font("Resources/font.bmp");
@@ -36,6 +36,9 @@ Hud::Hud()
     frameCount = 0;
     totalTime = 0.0f;
     fps = 0;
+
+    yBottom = view.bottom;
+    yTop = view.top;
 }
 
 // ------------------------------------------------------------------------------
@@ -89,13 +92,13 @@ void Hud::Draw()
 
     text.str("");
     text << "Score - " << score;
-    font->Draw(window->CenterX() - 70, 610, text.str(), textColor);
+    font->Draw(window->CenterX() - 70, window->CenterY() + window->CenterY() - 40, text.str(), textColor);
     
     if (SpaceBattle::player->Life() != life) {
         life = SpaceBattle::player->Life();
         text.str("");
         text << "Life - " << life << " %";
-        font->Draw(945, 50, text.str(), textColor);
+        font->Draw(window->CenterX() - 70, yTop, text.str(), textColor);
     }
 
 

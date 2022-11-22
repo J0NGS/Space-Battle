@@ -16,7 +16,6 @@
 
 #include "Object.h"                     // objetos do jogo
 #include "Sprite.h"                     // desenho de sprites
-
 #include "Vector.h"                     // representação de vetores
 #include "Particles.h"                  // sistema de partículas
 #include "Controller.h"                 // entrada pelo controle
