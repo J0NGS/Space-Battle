@@ -21,6 +21,9 @@ Audio  * SpaceBattle::audio   = nullptr;
 Scene  * SpaceBattle::scene   = nullptr;
 bool     SpaceBattle::viewHUD = false;
 
+Image * SpaceBattle::enemy1 = nullptr;                // número de inimigos rosa
+Image * SpaceBattle::enemy2 = nullptr;                // número de inimigos rosa
+Image * SpaceBattle::enemy3 = nullptr;                // número de inimigos rosa
 // ------------------------------------------------------------------------------
 
 void SpaceBattle::Init()
@@ -48,17 +51,18 @@ void SpaceBattle::Init()
     player  = new Player();
     scene   = new Scene();
     
+    enemy1 = new Image("Resources/Enemys/Ship1.png");
+    //enemy2 = new Image("Resources/Enemys/Ship2.png");
+    //enemy3 = new Image("Resources/Enemys/Ship3.png");
+
+
     // cria o painel de informa��es
     //hud = new Hud();
 
     // adiciona objetos na cena (sem colis�o)
     scene->Add(player, MOVING);
-    scene->Add(new Delay, STATIC);  
-    //scene->Add(new Magenta(player), STATIC);
-    //scene->Add(new Blue(player), STATIC);
-    //scene->Add(new Green(player), STATIC);
-    //scene->Add(new Orange(player), STATIC);
-    //scene->Add(new Delay(), STATIC);
+    scene->Add(new Delay(), STATIC);
+    
 
     // ----------------------
     // inicializa a viewport

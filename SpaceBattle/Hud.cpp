@@ -15,9 +15,14 @@
 // ------------------------------------------------------------------------------
 
 // inicializa contadores
-uint Hud::life  = 100;
-uint Hud::score = 0;
-uint Hud::time  = 0;
+uint Hud::life      = 100;
+uint Hud::score     = 0;
+uint Hud::time      = 0;
+uint Hud::particles = 0;
+
+uint Hud::enemy1 = 0;               // número de inimigos rosa
+uint Hud::enemy2 = 0;               // número de inimigos rosa
+uint Hud::enemy3 = 0;               // número de inimigos rosa
 
 // ------------------------------------------------------------------------------
 

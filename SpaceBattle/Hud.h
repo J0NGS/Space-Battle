@@ -35,9 +35,13 @@ private:
     uint fps;                           // valor para exibição do fps
 
 public:
-    static uint life;               // número de mísseis na tela
-    static uint score;              // número de inimigos laranja
-    static uint time;               // número de inimigos rosa
+    static uint life;                 // número de mísseis na tela
+    static uint score;                // número de inimigos laranja
+    static uint time;                 // número de inimigos rosa
+    static uint particles;            // número de particulas
+    static uint enemy1;               // número de inimigos rosa
+    static uint enemy2;               // número de inimigos rosa
+    static uint enemy3;               // número de inimigos rosa
     
     Hud();                              // construtor
     ~Hud();                             // destrutor
