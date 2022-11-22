@@ -11,7 +11,7 @@
 
 #include "Delay.h"
 #include "SpaceBattle.h"
-//#include "WaveO.h"
+#include "Wave0.h"
 //#include "WaveM.h"
 //#include "WaveB.h"
 //#include "WaveG.h"
@@ -57,8 +57,8 @@ void Delay::Update()
         // toca música do jogo
         
         SpaceBattle::audio->Play(THEME, true);
-        //SpaceBattle::scene->Add(new WaveO(), STATIC);
-        //SpaceBattle::viewHUD = true;
+        SpaceBattle::scene->Add(new Wave0(), STATIC);
+        SpaceBattle::viewHUD = true;
         fase1 = true;
     }
 
