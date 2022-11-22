@@ -19,7 +19,7 @@
 uint Hud::score     = 0;
 uint Hud::time      = 0;
 uint Hud::particles = 0;
-int  Hud::life   = SpaceBattle::player->Life();
+ int Hud::life = SpaceBattle::player->Life();
 uint Hud::enemy1 = 0;               // número de inimigos rosa
 uint Hud::enemy2 = 0;               // número de inimigos rosa
 uint Hud::enemy3 = 0;               // número de inimigos rosa
@@ -31,7 +31,7 @@ Hud::Hud()
     // cria fonte para exibição de texto
     font = new Font("Resources/font.bmp");
     font->Spacing("Resources/font.dat");
-    
+       
     // inicializa contador de frames e tempo transcorrido
     frameCount = 0;
     totalTime = 0.0f;
@@ -51,6 +51,7 @@ Hud::~Hud()
 
 void Hud::Update()
 {
+
     // tempo acumulado dos frames
     totalTime += gameTime;
 
@@ -64,6 +65,7 @@ void Hud::Update()
         frameCount = 0;
         totalTime -= 1.0f;
     }
+
 }
 
 // -------------------------------------------------------------------------------
@@ -88,6 +90,14 @@ void Hud::Draw()
     text.str("");
     text << "Score - " << score;
     font->Draw(window->CenterX() - 70, 610, text.str(), textColor);
+    
+    if (SpaceBattle::player->Life() != life) {
+        life = SpaceBattle::player->Life();
+        text.str("");
+        text << "Life - " << life << " %";
+        font->Draw(945, 50, text.str(), textColor);
+    }
+
 
 
 }

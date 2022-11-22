@@ -12,10 +12,11 @@
 #include "Player.h"
 #include "Missile.h"
 #include "SpaceBattle.h"
+
 //#include "Hud.h"
 
 Image* Player::missile = nullptr;
-int Player::life = 80;
+int Player::life = 100;
 
 // -------------------------------------------------------------------------------
 
@@ -145,6 +146,13 @@ bool Player::AxisTimed(int axisX, int axisY, float time)
 
 // -------------------------------------------------------------------------------
 
+void Player::Damage(int dmg)
+{
+    Player::life = Player::life - dmg;
+}
+
+// -------------------------------------------------------------------------------
+
 void Player::Move(Vector&& v)
 {
     // soma vetor movimento (v) ao vetor velocidade
@@ -186,7 +194,7 @@ void Player::Update()
             {
                 // pare de se movimentar imediatamente
                 speed.ScaleTo(0.0f);
-            }
+            } 
             else
             {
                 // some um vetor no sentido contr�rio para frear
@@ -248,7 +256,6 @@ void Player::Update()
         else if (window->KeyDown('W')){
             Move(Vector(90.0f, accel));
             //RotateTo(90.0f - 90);
-
         }
         else if (window->KeyDown('S')) {
             Move(Vector(270.0f, accel));
@@ -262,6 +269,7 @@ void Player::Update()
                 // velocidade muita baixa, n�o use soma vetorial, apenas pare
                 speed.ScaleTo(0.0f);
                 SpaceBattle::audio->Stop(TAIL);
+                Damage(10);
             }
         // controla dire��o dos disparos
         if (window->KeyDown(VK_RIGHT) && window->KeyDown(VK_UP)) {
@@ -283,6 +291,7 @@ void Player::Update()
         else if (window->KeyDown(VK_RIGHT)) {
             keysPressed = true;
             firingAngle = 0.0f;
+
         }
         else if (window->KeyDown(VK_LEFT)) {
             keysPressed = true;

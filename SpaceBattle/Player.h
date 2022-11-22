@@ -67,7 +67,8 @@ public:
     void Move(Vector&& v);              // movimenta jogador
     void Update();                      // atualização
     void Draw();                        // desenho
-    int  Life();
+    int  Life();                        // função que retorna o valor da vida
+    void Damage(int dmg);               // função para dar dano no player
 };
 
 inline int Player::Life() {
