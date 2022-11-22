@@ -1,16 +1,16 @@
 /**********************************************************************************
-// Orange (Arquivo de Cabeçalho)
+// Enemy1 (Arquivo de Cabeçalho)
 // 
-// Criação:     05 Ago 2019
-// Atualização: 11 Nov 2021
-// Compilador:  Visual C++ 2019
+// Criação:     21 Nov 2022
+// Atualização: 21 Nov 2022
+// Compilador:  Visual C++ 2022
 //
-// Descrição:   Objeto faz movimento retilíneo
+// Descrição:   Inimigo 1 que usa a i.a. de movimento retilineo
 //
 **********************************************************************************/
 
-#ifndef _BASICAI_ORANGE_H_
-#define _BASICAI_ORANGE_H_
+#ifndef _SPACEBATTLE_ORANGE_H_
+#define _SPACEBATTLE_ORANGE_H_
 
 // ---------------------------------------------------------------------------------
 

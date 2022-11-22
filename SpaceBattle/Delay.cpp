@@ -1,9 +1,9 @@
 /**********************************************************************************
 // Delay (Código Fonte)
 //
-// Criação:     02 Ago 2019
-// Atualização: 11 Nov 2021
-// Compilador:  Visual C++ 2019
+// Criação:     19 nOV 2022
+// Atualização: 19 nOV 2022
+// Compilador:  Visual C++ 2022
 //
 // Descrição:   Sincroniza uma ação
 //
@@ -54,7 +54,7 @@ void Delay::Update()
     {
         // toca áudio de introdução
         notPlayed = false;
-        end       = false;
+        end = false;
     }
 
     if (!fase1 && timer.Elapsed(6.0f))
@@ -90,14 +90,12 @@ void Delay::Update()
     //}
 
     if (SpaceBattle::player->Life() <= 0) {
-        SpaceBattle::scene->Delete(SpaceBattle::player, MOVING);
+        SpaceBattle::scene->Remove(SpaceBattle::player, MOVING);
+        anim->NextFrame();
         end = true;
-        notPlayed = true;
-        fase1 = false;
-        fase2 = false;
-        fase3 = false;
-        fase4 = false;
+        fase1 = true;
     }
+
     
 
 
@@ -112,7 +110,6 @@ void Delay::Draw()
     
     if (end == true){
         gameover->Draw(game->viewport.left + window->CenterX(), game->viewport.top + window->CenterY() - 150, Layer::FRONT);
-        anim->NextFrame();
     }
 }
 

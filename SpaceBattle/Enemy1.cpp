@@ -1,11 +1,11 @@
 /**********************************************************************************
 // Orange (Código Fonte)
 // 
-// Criação:     05 Ago 2019
-// Atualização: 11 Nov 2021
-// Compilador:  Visual C++ 2019
+// Criação:     21 Nov 2022
+// Atualização: 21 Nov 2022
+// Compilador:  Visual C++ 2022
 //
-// Descrição:   Objeto faz movimento retilíneo
+// Descrição:   Inimigo 1 que usa a i.a. de movimento retilineo
 //
 **********************************************************************************/
 
@@ -31,7 +31,7 @@ Enemy1::Enemy1(float pX, float pY, float ang)
 
     // configuração do emissor de partículas
     Generator emitter;
-    emitter.imgFile      = "Resources/Player/particle_fire2.png";    // arquivo de imagem
+    emitter.imgFile      = "Resources/Player/particle_fire.png";    // arquivo de imagem
     emitter.angle        = speed.Angle() + 180;                     // ângulo base do emissor
     emitter.spread       = 0;                                       // espalhamento em graus
     emitter.lifetime     = 0.1f;                                    // tempo de vida em segundos
@@ -73,7 +73,15 @@ void Enemy1::OnCollision(Object * obj)
         SpaceBattle::scene->Delete(obj, STATIC);
         SpaceBattle::scene->Delete(this, MOVING);
         SpaceBattle::scene->Add(new Explosion(x, y), STATIC);
-        //SpaceBattle::audio->Play(EXPLODE);
+        SpaceBattle::audio->Play(EXPLOSION);
+        Hud::score += 2;
+    }
+    if (obj->Type() == PLAYER)
+    {
+        SpaceBattle::scene->Delete(this, MOVING);
+        SpaceBattle::scene->Add(new Explosion(x, y), STATIC);
+        SpaceBattle::audio->Play(EXPLOSION);
+        Hud::score += 2;
     }
 }
 

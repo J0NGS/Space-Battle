@@ -1,16 +1,16 @@
 /**********************************************************************************
 // WaveO (Arquivo de Cabeçalho)
 //
-// Criação:     06 Ago 2019
-// Atualização: 11 Nov 2021
-// Compilador:  Visual C++ 2019
+// Criação:     21 Nob 2022
+// Atualização: 21 Nob 2022
+// Compilador:  Visual C++ 2022
 //
-// Descrição:   Cria uma onda de inimigos Orange
+// Descrição:   Cria uma onda de inimigos Enemy1
 //
 **********************************************************************************/
 
-#ifndef _BASICAI_WAVEO_H_
-#define _BASICAI_WAVEO_H_
+#ifndef _SPACECBATTLE_WAVEO_H_
+#define _SPACECBATTLE_WAVEO_H_
 
 // --------------------------------------------------------------------------------
 

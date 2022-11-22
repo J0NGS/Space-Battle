@@ -10,18 +10,22 @@
 **********************************************************************************/
 
 #include "Player.h"
+#include "Hud.h"
 #include "Missile.h"
 #include "SpaceBattle.h"
 
 //#include "Hud.h"
 
 Image* Player::missile = nullptr;
-int Player::life = 100;
+
 
 // -------------------------------------------------------------------------------
 
 Player::Player()
 {
+    //inicializa vida
+    life = 100;
+
     // inicializa controle
     gamepad   = new Controller();
     gamepadOn = gamepad->Initialize();
@@ -148,10 +152,15 @@ bool Player::AxisTimed(int axisX, int axisY, float time)
 
 void Player::Damage(int dmg)
 {
-    Player::life = Player::life - dmg;
+    life -= dmg;
 }
 
 // -------------------------------------------------------------------------------
+
+void Player::Oncolission(Object* obj)
+{
+
+}
 
 void Player::Move(Vector&& v)
 {
@@ -170,6 +179,10 @@ void Player::Move(Vector&& v)
 
 void Player::Update()
 {
+    // atualizando vida do hud
+    Hud::life = life;
+
+
     // magnitude do vetor acelera��o
     float accel = 40.0f * gameTime;
 
@@ -214,7 +227,7 @@ void Player::Update()
         {
             float ang = Line::Angle(Point(0, 0), Point(float(gamepad->Axis(AxisRX)), float(gamepad->Axis(AxisRY))));
             SpaceBattle::audio->Play(FIRE);
-            SpaceBattle::scene->Add(new Missile(ang), STATIC);
+            SpaceBattle::scene->Add(new Missile(ang,0), STATIC);
         }
     }
 
@@ -295,6 +308,7 @@ void Player::Update()
         else if (window->KeyDown(VK_LEFT)) {
             keysPressed = true;
             firingAngle = 180.0f;
+            Damage(10);
         }
         else if (window->KeyDown(VK_UP)) {
             keysPressed = true;
@@ -313,7 +327,7 @@ void Player::Update()
         if (KeysTimed(keysPressed, 0.300f))
         {
             SpaceBattle::audio->Play(FIRE);
-            SpaceBattle::scene->Add(new Missile(firingAngle), STATIC);
+            SpaceBattle::scene->Add(new Missile(firingAngle, 0), STATIC);
         }
     }
 

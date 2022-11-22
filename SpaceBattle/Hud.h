@@ -1,16 +1,16 @@
 /**********************************************************************************
 // Hud (Arquivo de Cabeçalho)
 //
-// Criação:     02 Ago 2019
-// Atualização: 11 Nov 2021
-// Compilador:  Visual C++ 2019
+// Criação:     19 Nov 2022
+// Atualização: 19 Nov 2022
+// Compilador:  Visual C++ 2022
 //
-// Descrição:   Heads Up Display
+// Descrição:   Display do jogador
 //
 **********************************************************************************/
 
-#ifndef _BASICAI_HUD_H_
-#define _BASICAI_HUD_H_
+#ifndef _SPACEBATTLE_HUD_H_
+#define _SPACEBATTLE_HUD_H_
 
 // --------------------------------------------------------------------------------
 
@@ -29,16 +29,14 @@ private:
     Font* bold = nullptr;              // fonte para exibição negrito
     Sprite* infoBox = nullptr;         // área de informações do jogo
 
-    stringstream text;                  // texto temporário
+    stringstream text;              // texto temporário vida
     uint frameCount;                    // contador de quadros por segundo
     float totalTime;                    // tempo total transcorrido 
     uint fps;                           // valor para exibição do fps
 
-    float yTop;
-    float yBottom;
 
 public:
-    static int  life;                 // número de mísseis na tela
+    static int   life;                // vida na hud
     static uint score;                // número de inimigos laranja
     static uint time;                 // número de inimigos rosa
     static uint particles;            // número de particulas
@@ -46,7 +44,7 @@ public:
     static uint enemy2;               // número de inimigos rosa
     static uint enemy3;               // número de inimigos rosa
     
-    Hud(ViewPort view);                              // construtor
+    Hud();                              // construtor
     ~Hud();                             // destrutor
 
     void Update();                      // atualização

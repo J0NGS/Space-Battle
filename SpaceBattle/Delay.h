@@ -1,11 +1,11 @@
 /**********************************************************************************
 // Delay (Arquivo de Cabeçalho)
 //
-// Criação:     02 Ago 2019
-// Atualização: 11 Nov 2021
+// Criação:     19 Nov 2022
+// Atualização: 19 Nov 2022
 // Compilador:  Visual C++ 2019
 //
-// Descrição:   Sincroniza uma ação
+// Descrição:   Passa as fases do jogo
 //
 **********************************************************************************/
 

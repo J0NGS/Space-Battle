@@ -20,10 +20,21 @@ Player*& Missile::player = SpaceBattle::player;        // referência para o play
 
 // ------------------------------------------------------------------------------
 
-Missile::Missile(float angle)
+Missile::Missile(float angle, int shooter)
 {
     // inicializa sprite
-    sprite = new Sprite(Player::missile);
+    if (shooter == 1) {
+        sprite = new Sprite("Resourcers/Enemys/shot1.png");
+    }
+
+    if (shooter == 2) {
+        sprite = new Sprite("Resourcers/Enemys/shot2.png");
+    }
+    if (shooter == 3) {
+        sprite = new Sprite("Resourcers/Enemys/shot3.png");
+    }
+    else
+        sprite = new Sprite(Player::missile);
 
     // cria bounding box
     BBox(new Circle(8));

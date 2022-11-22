@@ -16,18 +16,19 @@
 // ------------------------------------------------------------------------------
 
 // inicializa contadores
-uint Hud::score     = 0;
-uint Hud::time      = 0;
-uint Hud::particles = 0;
- int Hud::life = SpaceBattle::player->Life();
-uint Hud::enemy1 = 0;               // número de inimigos rosa
-uint Hud::enemy2 = 0;               // número de inimigos rosa
-uint Hud::enemy3 = 0;               // número de inimigos rosa
+ int Hud::life      = 100;                              // vida na tela
+uint Hud::score     = 0;                                // score na tela
+uint Hud::time      = 0;                                // tempo na tela
+uint Hud::particles = 0;                                // particulas na tela
+uint Hud::enemy1    = 0;                                // número de inimigos 1
+uint Hud::enemy2    = 0;                                // número de inimigos 2
+uint Hud::enemy3    = 0;                                // número de inimigos 3
 
 // ------------------------------------------------------------------------------
 
-Hud::Hud(ViewPort view)
+Hud::Hud()
 {
+
     // cria fonte para exibição de texto
     font = new Font("Resources/font.bmp");
     font->Spacing("Resources/font.dat");
@@ -36,9 +37,6 @@ Hud::Hud(ViewPort view)
     frameCount = 0;
     totalTime = 0.0f;
     fps = 0;
-
-    yBottom = view.bottom;
-    yTop = view.top;
 }
 
 // ------------------------------------------------------------------------------
@@ -79,7 +77,7 @@ void Hud::Draw()
     //infoBox->Draw(game->viewport.left + 140, game->viewport.top + 100, Layer::FRONT);
 
     // define cor do texto
-    Color textColor{ 0.7f, 0.7f, 0.7f, 1.0f };
+    Color textColor{ 1.0f, 1.0f, 1.0f, 1.0f };
 
     // desenha texto
     text.str("");
@@ -98,7 +96,7 @@ void Hud::Draw()
         life = SpaceBattle::player->Life();
         text.str("");
         text << "Life - " << life << " %";
-        font->Draw(window->CenterX() - 70, yTop, text.str(), textColor);
+        font->Draw(window->CenterX() - 70, window->CenterY() - 200, text.str(), textColor);
     }
 
 

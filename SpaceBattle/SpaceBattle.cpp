@@ -34,14 +34,18 @@ void SpaceBattle::Init()
     audio->Add(START, "Resources/Audio/init.wav");
     audio->Add(FIRE, "Resources/Audio/shoot.wav");
     audio->Add(TAIL, "Resources/Audio/tail.wav");
+    audio->Add(GAMEOVER, "Resources/Audio/gameover.wav");
+    audio->Add(EXPLOSION, "Resources/Audio/explosion.wav");
     
     // ajusta volumes
     //audio->Volume();
     audio->Volume(THEME, 0.30f);
     audio->Volume(START, 0.30f);
+    audio->Volume(EXPLOSION, 0.30f);
     audio->Volume(FIRE, 0.30f);
     audio->Volume(TAIL, 0.09f);
     audio->Play(START, true);
+    audio->Frequency(EXPLOSION, 8);
         
 
     // carrega/incializa objetos
@@ -76,7 +80,7 @@ void SpaceBattle::Init()
     viewport.top = 0.0f + dify;
     viewport.bottom = viewport.top + window->Height();
 
-    hud = new Hud(viewport);
+    hud = new Hud();
 }
 
 // ------------------------------------------------------------------------------

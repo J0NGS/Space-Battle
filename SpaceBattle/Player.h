@@ -49,7 +49,7 @@ private:
     bool keysCtrl;                      // habilita disparos pelas setas
     bool keysPressed;                   // qualquer seta pressionada
     float firingAngle;                  // direção dos disparos
-    static int life;                    // vida do jogador
+    int life;                           // vida do jogador
 
 public:
    
@@ -67,11 +67,16 @@ public:
     void Update();                      // atualização
     void Draw();                        // desenho
     int  Life();                        // função que retorna o valor da vida
+    void  LifeReset();                        // função que retorna o valor da vida
     void Damage(int dmg);               // função para dar dano no player
 };
 
 inline int Player::Life() {
-    return Player::life;
+    return this->life;
+}
+
+inline void Player::LifeReset() {
+    this->life = 100;
 }
 // ---------------------------------------------------------------------------------
 #endif
