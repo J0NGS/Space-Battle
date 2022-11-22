@@ -43,12 +43,11 @@ void SpaceBattle::Init()
     audio->Volume(TAIL, 0.09f);
     audio->Play(START, true);
         
-    // Cria hud
-    hud = new Hud();
 
     // carrega/incializa objetos
     bg      = new Background("Resources/Space.png");
     player  = new Player();
+    hud     = new Hud();
     scene   = new Scene();
     
     enemy1 = new Image("Resources/Enemys/Ship1.png");

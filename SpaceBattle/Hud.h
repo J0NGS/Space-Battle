@@ -35,7 +35,7 @@ private:
     uint fps;                           // valor para exibição do fps
 
 public:
-    static uint life;                 // número de mísseis na tela
+    static int  life;                 // número de mísseis na tela
     static uint score;                // número de inimigos laranja
     static uint time;                 // número de inimigos rosa
     static uint particles;            // número de particulas

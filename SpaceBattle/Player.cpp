@@ -15,6 +15,7 @@
 //#include "Hud.h"
 
 Image* Player::missile = nullptr;
+int Player::life = 80;
 
 // -------------------------------------------------------------------------------
 
@@ -29,7 +30,7 @@ Player::Player()
     missile = new Image("Resources/Player/Missile.png");
     speed.RotateTo(90.0f);
     speed.ScaleTo(0.0f);
-
+    
     BBox(new Poly(vertex, 4));
     
     

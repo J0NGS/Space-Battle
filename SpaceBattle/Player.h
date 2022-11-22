@@ -42,12 +42,15 @@ private:
     Controller* gamepad;                // leitura do controle
     bool gamepadOn;                     // controle está ligado
 
+
+
     Timer timer;                        // controla tempo dos disparos
     llong start;                        // marcação de início do disparo
     bool axisCtrl;                      // habilita leitura de disparos
     bool keysCtrl;                      // habilita disparos pelas setas
     bool keysPressed;                   // qualquer seta pressionada
     float firingAngle;                  // direção dos disparos
+    static int life;                    // vida do jogador
 
 public:
    
@@ -64,7 +67,11 @@ public:
     void Move(Vector&& v);              // movimenta jogador
     void Update();                      // atualização
     void Draw();                        // desenho
+    int  Life();
 };
 
+inline int Player::Life() {
+    return Player::life;
+}
 // ---------------------------------------------------------------------------------
 #endif
