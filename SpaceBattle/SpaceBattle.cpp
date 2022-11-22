@@ -55,6 +55,7 @@ void SpaceBattle::Init()
     scene   = new Scene();
     
     enemy1 = new Image("Resources/Enemys/Ship1.png");
+    enemy2 = new Image("Resources/Enemys/Ship2.png");
     //enemy2 = new Image("Resources/Enemys/Ship2.png");
     //enemy3 = new Image("Resources/Enemys/Ship3.png");
 

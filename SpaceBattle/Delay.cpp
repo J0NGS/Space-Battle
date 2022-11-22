@@ -12,7 +12,7 @@
 #include "Delay.h"
 #include "SpaceBattle.h"
 #include "Wave0.h"
-//#include "WaveM.h"
+#include "Wave1.h"
 //#include "WaveB.h"
 //#include "WaveG.h"
 //#include "Hud.h"
@@ -69,12 +69,12 @@ void Delay::Update()
         fase1 = true;
     }
 
-    //if (!fase2 && timer.Elapsed(8.0f))
-    //{
-    //    BasicAI::scene->Add(new WaveM(), STATIC);
-    //    fase2 = true;
-    //}
-    //
+    if (!fase2 && timer.Elapsed(8.0f))
+    {
+        SpaceBattle::scene->Add(new Wave1(), STATIC);
+        fase2 = true;
+    }
+    
     //if (!fase3 && timer.Elapsed(10.0f))
     //{
     //    BasicAI::scene->Add(new WaveB(), STATIC);
